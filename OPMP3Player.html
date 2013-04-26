@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>OPMP3Player</title>
+<script src="jquery.js" type="text/javascript"></script>
+<script src="OPMP3Player.min.js" type="text/javascript"></script>
+<style type="text/css">
+*{padding:0;margin:0;}
+body{font:12px/1.5 Lucida,"微软雅黑",Arial,sans-serif;}
+.lrcClass{font:14px/1.5 Lucida,"微软雅黑",Arial,sans-serif;text-align:center;color:#666;line-height:2em;padding:0px;margin:0;}
+.lrcHighlightClass{font:16px/1.5 Lucida,"微软雅黑",Arial,sans-serif;color:#F60;}
+</style>
+</head>
+<body style="background:#CCC;">
+<div style="width:600px;margin:10px auto;padding:20px;background:#FFF;border-radius:10px;">
+   
+    <div style="padding:30px;text-align:center;font-size:28px;font-weight:bold;text-shadow:#CCC 1px 2px 0;">
+    	OPMP3Player Demo
+    </div>
+   
+    
+    <div id="OPMP3Player_Container" style="width:100%;"></div>
+    <div style="border:1px solid #CCC;padding:10px;">
+        <div id="OPMP3Player_LRCBox" style="height:200px;position:relative;overflow:hidden;">
+        </div>
+    </div>    
+    <script type="text/javascript">    
+    var myPlayer=$('#OPMP3Player_Container').OPMP3Player({
+         flashUrl	:  "OPMP3Player.swf",
+         mp3Url		:  "http://s1.mjbox.com/file/u/96268/1/.mp3",
+		 autoPlay   :   true,
+		 lrcUrl     :   "woshiwodeqingren.lrc",
+		 lrcContainer : '#OPMP3Player_LRCBox',
+		 lrcClass : 'lrcClass',
+		 lrcHighlightClass : 'lrcHighlightClass',
+         timeChangeCallback: "myPlayer.timeChangeCallback"
+    });	
+    </script>
+    
+    
+    <p style="padding:20px 0 0 0;">
+    Code
+    <hr />
+    <pre style="color:#33F;">
+    
+==================HTML代码==================
+    
+&lt;div id="OPMP3Player_Container" style="width:100%;"&gt;&lt;/div&gt;
+
+&lt;div style="border:1px solid #CCC;padding:10px;"&gt;
+    &lt;div id="OPMP3Player_LRCBox" style="height:200px;position:relative;overflow:hidden;"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+    
+==================JS代码==================
+
+&lt;script type="text/javascript"&gt;
+    var myPlayer=$('#OPMP3Player_Container').OPMP3Player({
+        //Flash播放地址
+        flashUrl	:  "OPMP3Player.swf",
+        //MP3文件
+        mp3Url		:  "example_music.mp3",
+        //自动播放
+        autoPlay   :   true,
+        //LRC歌词，如果该值为空，将忽略所有LRC的操作
+        lrcUrl     :   "example_music.lrc",
+        //如果同时指定了歌词容器lrcContainer的height=xxPX，overflow=hidden和position=relative
+        //并且指定了timeChangeCallback为系统的xxx.timeChangeCallback，歌词将会自动滚动
+        lrcContainer : '#OPMP3Player_LRCBox',
+        //普通歌词CSS样式
+        lrcClass : 'lrcClass',
+        //歌词高亮CSS样式
+        lrcHighlightClass : 'lrcHighlightClass',
+        //时间改变调用函数，可以自定义，我们这里用于更新歌词
+        //如果您想全部自己定义，请参照OPMP3Player.js源代码
+        timeChangeCallback: "myPlayer.timeChangeCallback"
+    });
+&lt;/script&gt;
+    </pre>
+    </p>
+    
+    <p style="color:red;">
+    使用说明：在本地测试时，flash的回调函数是不能正常工作的，因此歌词显示有问题，需要做网站发布才可以查看。<br />
+    另外，歌词是需要UTF-8编码的才能正常显示。
+    </p>
+    
+    
+    <hr />
+    <div style="text-align:center;padding:10px;">作者：<a href="http://www.eamonning.com">Eamonn</a></div>
+    
+</div>
+</body>
+</html>
